@@ -1,6 +1,6 @@
 # PHP-Lint
 
-PHP-Lint is simplified linter solution for php, based on [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer),
+PHP-Lint is simplified linter solution for php, based on [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
 
 
 Currently it's support only as HG hook, GIT hook will come soon.
@@ -32,9 +32,9 @@ Checks only staged files in repository so it can be added in present repositorie
 Add following code into `.hg/hgrc` file or HG-client settings:
 ```
 [hooks]
-pretxncommit.hglint = vendor\bin\lint
+pretxncommit.hglint = vendor/bin/lint
 ```
-or in Windows:
+or on Windows:
 ```
 [hooks]
 pretxncommit.hglint = vendor\bin\lint.bat
