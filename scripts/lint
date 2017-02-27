@@ -1,0 +1,66 @@
+#!/usr/bin/env php
+<?php
+
+if (PHP_OS == 'WINNT') {
+    $command = 'vendor\bin\phpcs.bat';
+} else {
+    $command = './vendor/bin/phpcs';
+}
+
+$hgNode = isset($_ENV['HG_NODE']) ? escapeshellarg($_ENV['HG_NODE']) : 'default';
+
+// ability to skip checking
+if(isset($_ENV['NO_VERIFY']) && $_ENV['NO_VERIFY']) {
+    exit(0);
+}
+
+/**
+ * Simple filetype checking, it'll do its job for now
+ *
+ * @param $fileName
+ * @return bool
+ */
+function filterFileByExt($fileName) {
+    return pathinfo($fileName, PATHINFO_EXTENSION) === 'php';
+}
+
+/**
+ * get ruleset, local or global
+ */
+function getRuleset() {
+    $file = 'ruleset.xml';
+    if(!is_file($file)) {
+        $file = 'vendor/grnrbt/php-lint/ruleset.xml';
+    }
+    return escapeshellarg(realpath($file));
+}
+
+
+$command .= ' --standard=' . getRuleset();
+
+$output = [];
+
+exec('hg status -amun --change '. $hgNode, $output);
+
+foreach ($output as $file) {
+    $file = strtr($file, "\n", "\0");
+    if(!($file && filterFileByExt($file))) {
+        continue;
+    }
+
+    $linterOutput = [];
+    $returnCode = 0;
+    exec($command . ' ' . $file, $linterOutput, $returnCode);
+    echo implode("\n\r", $linterOutput);
+
+    if($returnCode) {
+        echo "\n";
+        echo "There are some problems with the modified files.";
+        echo "\n";
+        echo "If it is not possible to fix them all, commit with NO_VERIFY=1 hg commit ... .";
+        echo "\n";
+        exit(1);
+    }
+}
+
+exit(0);

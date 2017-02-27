@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<ruleset name="GR ruleset">
+    <description>GR coding standard for PHP_CodeSniffer.</description>
+
+    <rule ref="PEAR">
+        <exclude name="PEAR.Commenting.FileComment"/>
+    </rule>
+
+    <rule ref="PSR1"/>
+
+    <rule ref="PSR2"/>
+
+    <rule ref="PHPCompatibility" />
+
+    <rule ref="vendor/yiisoft/yii2-coding-standards/Yii2" />
+
+    <rule ref="Squiz.Arrays.ArrayBracketSpacing" />
+    <rule ref="Squiz.Arrays.ArrayDeclaration" />
+    <!--<rule ref="Squiz.Commenting.ClosingDeclarationComment" />-->
+    <rule ref="Squiz.ControlStructures.ElseIfDeclaration" />
+    <rule ref="Squiz.Commenting.BlockComment" />
+    <!--<rule ref="Squiz.Commenting.DocCommentAlignment" />-->
+    <rule ref="Squiz.Commenting.EmptyCatchComment" />
+    <rule ref="Squiz.Commenting.InlineComment" />
+    <rule ref="Squiz.Commenting.LongConditionClosingComment" />
+    <rule ref="Squiz.Commenting.PostStatementComment" />
+    <rule ref="Squiz.Formatting.OperatorBracket" />
+    <rule ref="Squiz.Operators.ComparisonOperatorUsage" />
+    <rule ref="Squiz.PHP.DisallowInlineIf" />
+    <rule ref="Squiz.Strings.ConcatenationSpacing" />
+    <rule ref="Squiz.WhiteSpace.ControlStructureSpacing" />
+    <!--<rule ref="Squiz.WhiteSpace.FunctionClosingBraceSpace" />-->
+    <rule ref="Squiz.WhiteSpace.FunctionSpacing" />
+    <rule ref="Squiz.WhiteSpace.OperatorSpacing" />
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace" />
+    <rule ref="Generic.Commenting.Todo"/>
+    <rule ref="Generic.ControlStructures.InlineControlStructure"/>
+    <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+    <rule ref="Generic.Formatting.SpaceAfterCast"/>
+    <rule ref="Generic.NamingConventions.ConstructorName"/>
+    <rule ref="Generic.PHP.DeprecatedFunctions"/>
+    <rule ref="Generic.PHP.LowerCaseKeyword"/>
+    <rule ref="Generic.Strings.UnnecessaryStringConcat"/>
+    <rule ref="PSR2.Files.EndFileNewline"/>
+    <rule ref="Zend.Files.ClosingTag"/>
+
+</ruleset>
